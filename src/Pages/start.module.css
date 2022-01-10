@@ -1,0 +1,7 @@
+.rick{
+    filter: blur(32px);
+}
+
+.rick:hover{
+    filter:none;
+}
