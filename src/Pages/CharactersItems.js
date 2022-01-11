@@ -11,6 +11,7 @@ import BasicModal from "../Components/Modal";
 
 const CharactersItems = ({setStart}) => {
     const [characters, setCharacters] = useState([])
+    const [charactersFav, setCharactersFav] = useState([])
     const [targetCharacter, setTargetCharacter] = useState({})
     const [pages, setPages] = useState()
     const [paginCount, setPaginCount] = useState(1);
@@ -20,6 +21,10 @@ const CharactersItems = ({setStart}) => {
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    console.log(charactersFav)
+    useEffect(()=>{
+        localStorage.setItem ('favorite', JSON.stringify(charactersFav))
+    }, [charactersFav])
 
     useEffect(() => {
         // localStorage.clear()
@@ -83,6 +88,7 @@ const CharactersItems = ({setStart}) => {
                     setTargetCharacter={setTargetCharacter}
                     setCharacters={setCharacters}
                     paginCount={paginCount}
+                    setCharactersFav={setCharactersFav}
                 />
                 <PaginationRounded
                     pages={pages}

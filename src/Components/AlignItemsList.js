@@ -8,7 +8,7 @@ const listStyle = {
    columnCount: 4,
 }
 
-const AlignItemsList = ({list, styles, handleOpen, setTargetCharacter, setCharacters, paginCount}) => {
+const AlignItemsList = ({list, styles, handleOpen, setTargetCharacter, setCharacters, paginCount, setCharactersFav}) => {
     console.log(list)
     return (
         <List sx={{ width: '100%', maxWidth: '100vw', my: 5 }} style={listStyle}>{list.map((item)=>(
@@ -26,6 +26,13 @@ const AlignItemsList = ({list, styles, handleOpen, setTargetCharacter, setCharac
                 />
                 <Box onClick={(e)=>{
                     e.stopPropagation()
+                    setCharactersFav((pre)=>{
+                     let target = pre.find((i)=> {
+                         console.log(i.id, item.id)
+                        return i.id === item.id
+                     })
+                      return target ? pre.filter((k)=>k.id!==item.id) : [...pre, item];
+                    })
                     setCharacters((pre)=>{
                         const supplList = pre.map((j)=>{
                             if(j.id===item.id){
