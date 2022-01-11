@@ -15,7 +15,6 @@ const style = {
 };
 
 export default function BasicModal({open, handleClose, targetCharacter, styles}) {
-    console.log(styles)
     return (
         <div>
             <Modal

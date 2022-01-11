@@ -6,7 +6,6 @@ const ComboBox = ({list, handleOpen, setTargetCharacter}) => {
     const labelList = list.map((item)=>{
         return {...item, label: item.name}
     })
-    console.log(handleOpen)
     return (
         <Autocomplete
             disablePortal

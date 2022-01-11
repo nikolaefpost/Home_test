@@ -5,8 +5,12 @@ import start from '../Images/start.png'
 import '../App.css';
 import {Box, Button, Grid} from "@mui/material";
 import styles from './start.module.css'
+import {useHistory} from "react-router-dom";
+import {CHARACTERS_ROUTE} from "../Utils/consts";
 
 function App({setStart}) {
+    const history = useHistory();
+    localStorage.clear()
     return (
         <Box
             className="App"
@@ -26,7 +30,9 @@ function App({setStart}) {
             <Box sx={{ gridArea: 'rick', textAlign: 'center' }}><div className={styles.rick}><img src={rick}  alt="logo" /></div></Box>
             <Box sx={{ gridArea: 'morty', textAlign: 'center' }}><img src={morty} className={styles.morty} alt="logo" /></Box>
             <Box sx={{ gridArea: 'start', textAlign: 'center' }}>
-                <Button variant="contained" color="success" onClick={()=>setStart(true)}><img src={start}  alt="logo" /></Button>
+                <Button variant="contained" color="success" onClick={()=> history.push(CHARACTERS_ROUTE)}>
+                    <img src={start}  alt="logo" />
+                </Button>
             </Box>
             {/*<Box sx={{ gridArea: 'footer', bgcolor: 'warning.main' }}>Footer</Box>*/}
         </Box>

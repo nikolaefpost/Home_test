@@ -7,21 +7,25 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ComboBox from "../Components/ComboBox";
 import PaginationRounded from "../Components/Pagination";
 import BasicModal from "../Components/Modal";
+import {useHistory} from "react-router-dom";
+import {CHARACTERS_ROUTE, FAVORITE_ROUTE, START_ROUTE} from "../Utils/consts";
 
 
-const CharactersItems = ({setStart}) => {
+const CharactersItems = () => {
+
     const [characters, setCharacters] = useState([])
-    const [charactersFav, setCharactersFav] = useState([])
+    const [charactersFav, setCharactersFav] = useState(JSON.parse (localStorage.getItem('favorite'))||[])
+    const [like, setLike] = useState([])
     const [targetCharacter, setTargetCharacter] = useState({})
     const [pages, setPages] = useState()
     const [paginCount, setPaginCount] = useState(1);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-
     const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    console.log(charactersFav)
+    console.log(characters)
+    const history = useHistory();
     useEffect(()=>{
         localStorage.setItem ('favorite', JSON.stringify(charactersFav))
     }, [charactersFav])
@@ -37,10 +41,11 @@ const CharactersItems = ({setStart}) => {
             fetch('https://rickandmortyapi.com/api/character?page=' + paginCount)
                 .then(res => res.json())
                 .then((result) => {
-                        if(result.info.pages!==pages){
-                            setPages(result.info.pages)
-                            localStorage.setItem ('page', JSON.stringify(result.info.pages));
-                        }
+                        // if(result.info.pages!==pages){
+                        //
+                        // }
+                        setPages(result.info.pages)
+                        localStorage.setItem ('page', JSON.stringify(result.info.pages));
 
                         setCharacters(result.results)
                         setIsLoaded(true);
@@ -70,12 +75,15 @@ const CharactersItems = ({setStart}) => {
                     <Button
                         variant="outlined"
                         color='primary'
-                        onClick={() => setStart(false)}
+                        onClick={()=> history.push(START_ROUTE)}
                     ><ArrowLeftIcon>Filled</ArrowLeftIcon>RETURN TO START</Button>
 
-                    <Button variant="outlined">SHOW FAVORITES_ <FavoriteIcon sx={{color: '#ff1744'}}/></Button>
+                    <Button
+                        variant="outlined"
+                        onClick={()=> history.push(FAVORITE_ROUTE)}
+                    >SHOW FAVORITES_ <FavoriteIcon sx={{color: '#ff1744'}}/></Button>
                 </Box>
-                <Box sx={{my: 5, fontSize: 36, fontWeight: 'bold'}}>List of cartoon characters Rick and Morty</Box>
+                <Box sx={{my: 5, fontSize: 36, fontWeight: 'bold'}}>List of Cartoon Characters Rick and Morty</Box>
                 <ComboBox
                     list={characters}
                     handleOpen={handleOpen}
@@ -89,6 +97,9 @@ const CharactersItems = ({setStart}) => {
                     setCharacters={setCharacters}
                     paginCount={paginCount}
                     setCharactersFav={setCharactersFav}
+                    listStyle = {{columnCount: 4}}
+                    sx= {{ width: '100%', maxWidth: '100vw', my: 5 }}
+                    box = {true}
                 />
                 <PaginationRounded
                     pages={pages}
