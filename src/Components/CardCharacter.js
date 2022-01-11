@@ -3,11 +3,12 @@ import React from 'react';
 import {Card, CardContent, CardMedia, Typography} from "@mui/material";
 
 const CardCharacter = ({targetCharacter}) => {
+    console.log(targetCharacter)
     return (
         <Card sx={{  }}>
             <CardMedia
                 component="img"
-                image={targetCharacter.image}
+                image={targetCharacter.imageAdd ? targetCharacter.imageAdd : targetCharacter.image}
                 alt="character image"
             />
             <CardContent sx={{ }}>
