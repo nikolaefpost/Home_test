@@ -1,7 +1,6 @@
 import React from 'react';
 import {Box, Button, Input} from '@mui/material';
 import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
 
 
 export default class ImgForm extends React.Component {

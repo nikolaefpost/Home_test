@@ -3,7 +3,6 @@ import title from '../Images/title.png';
 import rick from '../Images/rick.svg'
 import start from '../Images/start.png'
 import signIn from '../Images/signIn.png'
-import '../App.css';
 import {Box, Button, Grid} from "@mui/material";
 import styles from './start.module.css'
 import {useHistory} from "react-router-dom";
@@ -16,7 +15,7 @@ function App() {
     localStorage.clear()
     return (
         <Box
-            className="App"
+            className={styles.app}
             sx={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(4, 1fr)',
@@ -34,7 +33,7 @@ function App() {
                     <img src={signIn}  alt="logo" />
                 </Button>
             </Box>
-            <Box sx={{ gridArea: 'title', textAlign: 'center' }}><img src={title} className="App-logo" alt="logo" /></Box>
+            <Box sx={{ gridArea: 'title', textAlign: 'center' }}><img src={title} className={styles.app_logo} alt="logo" /></Box>
             <Box sx={{ gridArea: 'rick', textAlign: 'center' }}><div className={hover ? styles.rick_hover:styles.rick}><img src={rick}  alt="logo" /></div></Box>
             <Box sx={{ gridArea: 'morty', textAlign: 'center' }}><img src={morty} className={styles.morty}  alt="logo" /></Box>
             <Box sx={{ gridArea: 'start', textAlign: 'center' }}>

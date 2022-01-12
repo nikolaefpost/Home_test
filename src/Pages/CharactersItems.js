@@ -52,7 +52,6 @@ const CharactersItems = () => {
     }, [charactersFav])
 
     useEffect(() => {
-        // localStorage.clear()
         const list = JSON.parse (localStorage.getItem(paginCount))
         if(list){
             setCharacters(list)

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Box, Modal} from "@mui/material";
-import CardCharacter from "./CardCharacter";
 import CloseIcon from '@mui/icons-material/Close';
 import ImgForm from "./ImgForm";
 

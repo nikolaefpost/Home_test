@@ -1,5 +1,4 @@
 import React from 'react';
-// import {Switch, Route, Redirect} from 'react-router-dom'
 import {routes} from "../routes";
 import {START_ROUTE} from "../Utils/consts";
 import {Redirect, Route, Switch} from "react-router-dom";
@@ -11,7 +10,7 @@ const AppRouter = () => {
             {routes.map(({path, Component})=>
                 <Route key={path} path={path} component={Component} exact />
             )}
-            {/*<Redirect to={START_ROUTE}/>*/}
+            <Redirect to={START_ROUTE}/>
         </Switch>
     );
 };

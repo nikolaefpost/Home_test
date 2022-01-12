@@ -1,6 +1,6 @@
 import React from 'react';
 import List from '@mui/material/List'
-import {Avatar, Box, Button, Divider, ListItem, ListItemAvatar, ListItemText} from "@mui/material";
+import {Avatar, Box, Button, ListItem, ListItemAvatar, ListItemText} from "@mui/material";
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
@@ -22,7 +22,6 @@ const AlignItemsList = ({
                             sx,
                             box
                         }) => {
-    console.log(list)
     return (
         <List sx={sx} style={listStyle}>{list.map((item) => (
             <Box
@@ -63,7 +62,8 @@ const AlignItemsList = ({
                                 setCharacters((pre) => {
                                     const supplList = pre.map((j) => {
                                         if (j.id === item.id) {
-                                            return !j.isLike ? {...j, isLike: true, isDisLike: false} : {...j, isLike: false};
+                                            return !j.isLike ? {...j, isLike: true, isDisLike: false} :
+                                                {...j, isLike: false};
                                         } else return j
                                     })
                                     localStorage.setItem(paginCount, JSON.stringify(supplList))
@@ -79,10 +79,8 @@ const AlignItemsList = ({
                                 setCharacters((pre) => {
                                     const supplList = pre.map((j) => {
                                         if (j.id === item.id) {
-                                            return !j.isDisLike ? {...j, isDisLike: true, isLike: false} : {
-                                                ...j,
-                                                isDisLike: false
-                                            };
+                                            return !j.isDisLike ? {...j, isDisLike: true, isLike: false} :
+                                                {...j, isDisLike: false};
                                         } else return j
                                     })
                                     localStorage.setItem(paginCount, JSON.stringify(supplList))

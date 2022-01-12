@@ -1,3 +1,15 @@
+.app{
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.app_logo{
+    margin-top: 100px;
+    width: 50%;
+}
 .rick{
     filter: blur(32px);
 }
