@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import AlignItemsList from "../Components/AlignItemsList";
 import styles from './charactersItems.module.css'
-import {Box, Button, Modal} from "@mui/material";
+import {Box, Button} from "@mui/material";
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ComboBox from "../Components/ComboBox";
 import PaginationRounded from "../Components/Pagination";
 import BasicModal from "../Components/Modal";
 import {useHistory} from "react-router-dom";
-import {CHARACTERS_ROUTE, FAVORITE_ROUTE, START_ROUTE} from "../Utils/consts";
+import { FAVORITE_ROUTE, START_ROUTE} from "../Utils/consts";
 import InputModal from "../Components/InputModal";
 
 
@@ -31,29 +31,20 @@ const CharactersItems = () => {
     const handleCloseImg  = () => setModalImg(false);
 
     const [img, setImg] = useState('')
-    console.log(img)
 
-    let  input_img;
-    const enterImg = (e)=> {
-        console.log(input_img)
-        let fReader = new FileReader();
-        fReader.readAsDataURL(input_img.files[0]);
-        fReader.onloadend = function(event){
-        }
-
-        // setImg(e.target.value)
-    }
     const [id, setId] = useState()
 
     const history = useHistory();
     useEffect(()=>{
-        const addImgList = JSON.parse(localStorage.getItem(paginCount))?.map((item)=>{
-            return (item.id===id) ? {...item, imageAdd: img}: item
-        })
-
-        console.log(addImgList)
-        if (addImgList) localStorage.setItem (paginCount, JSON.stringify(addImgList))
-
+        if (img !== '') {
+            setCharacters((pre) => {
+                const supplList = pre.map((j) => {
+                    return (j.id === id) ? {...j, imageAdd: img} : j;
+                })
+                localStorage.setItem(paginCount, JSON.stringify(supplList))
+                return supplList
+            })
+        }
     }, [img])
 
     useEffect(()=>{
@@ -71,9 +62,6 @@ const CharactersItems = () => {
             fetch('https://rickandmortyapi.com/api/character?page=' + paginCount)
                 .then(res => res.json())
                 .then((result) => {
-                        // if(result.info.pages!==pages){
-                        //
-                        // }
                         setPages(result.info.pages)
                         localStorage.setItem ('page', JSON.stringify(result.info.pages));
 
@@ -121,7 +109,7 @@ const CharactersItems = () => {
                 />
                 <AlignItemsList
                     list={characters}
-                    styles={styles}
+                    foto={true}
                     handleOpen={handleOpen}
                     setTargetCharacter={setTargetCharacter}
                     setCharacters={setCharacters}

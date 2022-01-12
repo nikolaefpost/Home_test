@@ -10,6 +10,7 @@ const CardCharacter = ({targetCharacter}) => {
                 component="img"
                 image={targetCharacter.imageAdd ? targetCharacter.imageAdd : targetCharacter.image}
                 alt="character image"
+                maxHeight="440"
             />
             <CardContent sx={{ }}>
                 <Typography gutterBottom variant="h5" component="div">{targetCharacter.name}</Typography>

@@ -10,7 +10,7 @@ import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
 const AlignItemsList = ({
                             list,
-                            styles,
+                            foto,
                             handleOpen,
                             setTargetCharacter,
                             setCharacters,
@@ -35,22 +35,22 @@ const AlignItemsList = ({
             >
                 <ListItem alignItems="center">
                     <ListItemAvatar>
-                        <Avatar alt="Ava character" src={item.image}/>
+                        <Avatar alt="Ava character" src={item.imageAdd ? item.imageAdd : item.image}/>
                     </ListItemAvatar>
                     <ListItemText
                         primary={item.name}
                         secondary={item.status}
                     />
-                    <Button
+                    {foto && <Button
                         variant="outlined"
                         color='primary'
                         sx={{mx: 2}}
-                        onClick={(e)=> {
+                        onClick={(e) => {
                             e.stopPropagation();
                             handleOpenImg();
                             setId(item.id);
                         }}
-                    >add foto</Button>
+                    >add foto</Button>}
                     {box &&
                         <Box
                             sx={{ display: 'flex', justifyContent: 'flex-end'}}

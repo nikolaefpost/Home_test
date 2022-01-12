@@ -1,4 +1,7 @@
 import React from 'react';
+import {Box, Button, Input} from '@mui/material';
+import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
 
 
 export default class ImgForm extends React.Component {
@@ -22,14 +25,26 @@ export default class ImgForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Upload file:
-                    <input type="file" ref={this.fileInput} />
-                </label>
-                <br />
-                <button type="submit">Submit</button>
-            </form>
+            <>
+                <Typography component="div"
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '100%'
+                    }}
+                >
+                    <Box sx={{fontSize: 'h6.fontSize'}}>Select the file for the avatar of the character</Box>
+                    <Input sx={{mt: 2}} type='file' inputRef={this.fileInput} />
+                    <Button variant="contained" component="span" sx={{mt: 1}} onClick={this.handleSubmit}>
+                        Upload
+                    </Button>
+                </Typography>
+
+        </>
+
+
         );
     }
 }

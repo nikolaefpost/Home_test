@@ -2,6 +2,6 @@
     filter: blur(32px);
 }
 
-.rick:hover{
+.rick_hover{
     filter:none;
 }

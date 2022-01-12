@@ -7,15 +7,16 @@ import ImgForm from "./ImgForm";
 const style = {
     position: 'absolute',
     top: '30%',
-    left: '40%',
+    left: '45%',
     transform: 'translate(-30%, -30%)',
-    width: '30vw',
+    width: '20vw',
+    // height: '15vh',
     bgcolor: 'background.paper',
     boxShadow: 24,
-    p: 1,
+    p: 5,
 };
 
-export default function InputModal({open, handleClose, styles, setImg}) {
+export default function InputModal({open, handleClose, styles, setImg, img}) {
     return (
         <div>
             <Modal
@@ -33,6 +34,7 @@ export default function InputModal({open, handleClose, styles, setImg}) {
                     <ImgForm
                         setImg={setImg}
                         handleClose={handleClose}
+                        img={img}
                     />
                 </Box>
             </Modal>

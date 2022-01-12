@@ -1,7 +1,8 @@
-import {CHARACTERS_ROUTE, FAVORITE_ROUTE, START_ROUTE} from "./Utils/consts";
+import {CHARACTERS_ROUTE, FAVORITE_ROUTE, SIGNIN_ROUTE, START_ROUTE} from "./Utils/consts";
 import Start from "./Pages/Start";
 import CharactersItems from "./Pages/CharactersItems";
 import FavoriteCharacters from "./Pages/FavoriteCharacters";
+import SignIn from "./Pages/SignIn";
 
 
 export const routes = [
@@ -16,5 +17,9 @@ export const routes = [
     {
         path : FAVORITE_ROUTE,
         Component: FavoriteCharacters
+    },
+    {
+        path : SIGNIN_ROUTE,
+        Component: SignIn
     },
 ]
