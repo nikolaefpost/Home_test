@@ -12,7 +12,7 @@ import {useState} from "react";
 function App() {
     const history = useHistory();
     const [hover, setHover] = useState(false)
-    localStorage.clear()
+    // localStorage.clear()
     return (
         <Box
             className={styles.app}
