@@ -17,7 +17,7 @@ export default class ImgForm extends React.Component {
         fReader.readAsDataURL(this.fileInput.current.files[0]);
         fReader.onloadend = function(event){
             fAdd(event.target.result)
-            console.log(event.target.result)
+            console.log(typeof event.target.result)
             fClose()
         }
     }

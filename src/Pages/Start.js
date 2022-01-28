@@ -8,6 +8,9 @@ import styles from './start.module.css'
 import {useHistory} from "react-router-dom";
 import {CHARACTERS_ROUTE, SIGNIN_ROUTE} from "../Utils/consts";
 import {useState} from "react";
+import FilterableProductTable from "../Components/temp";
+
+
 
 function App() {
     const history = useHistory();
@@ -46,6 +49,7 @@ function App() {
                     <img src={start}  alt="logo" />
                 </Button>
             </Box>
+
         </Box>
     );
 }

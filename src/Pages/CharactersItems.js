@@ -10,6 +10,7 @@ import BasicModal from "../Components/Modal";
 import {useHistory} from "react-router-dom";
 import { FAVORITE_ROUTE, START_ROUTE} from "../Utils/consts";
 import InputModal from "../Components/InputModal";
+import NameForm from "../Components/temp";
 
 
 const CharactersItems = () => {
